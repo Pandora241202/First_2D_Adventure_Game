@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AllTileConfig", menuName = "Config/TileConfig/AllTileConfig")]
+[CreateAssetMenu(fileName = "AllTileConfig", menuName = "Config/TileConfig/AllTile")]
 public class AllTileConfig : ScriptableObject
 {
     [SerializeField] TileConfig[] tileConfigs;

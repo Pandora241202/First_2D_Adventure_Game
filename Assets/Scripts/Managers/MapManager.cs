@@ -4,40 +4,42 @@ using UnityEngine.Tilemaps;
 
 public class MapManager
 {
-    private Dictionary<TileBase, TileConfig> TileDict = new Dictionary<TileBase, TileConfig>();
+    private Dictionary<TileBase, TileConfig> tileDict = new Dictionary<TileBase, TileConfig>();
+    private Tilemap curMap;
 
     public MapManager(AllTileConfig allTileConfig)
     {
-        TileConfig[] tilesConfig = allTileConfig.TileConfigs;
+        TileConfig[] tileConfigs = allTileConfig.TileConfigs;
 
-        foreach (TileConfig tileConfig in tilesConfig)
+        foreach (TileConfig tileConfig in tileConfigs)
         {
-            foreach
+            foreach (TileBase tile in tileConfig.Tiles) 
+            {
+                tileDict.Add(tile, tileConfig);
+            }
         }
+
+        curMap = null;
     }
 
-    
-    private void Spawn(Vector3 pos)
+    public void SetUp(GameObject mapObj)
     {
-        if (body != null)
+        if (curMap != null) 
         {
-            GameObject.Destroy(body.gameObject);  
+            GameObject.Destroy(curMap.gameObject);
         }
-        
-        GameObject playerObj = GameObject.Instantiate(config.PlayerPrefab, pos, Quaternion.identity);
-        body = playerObj.GetComponent<Rigidbody2D>();
-        anim = playerObj.GetComponent<Animator>();
-        boxCol = playerObj.GetComponent<BoxCollider2D>();
-        trans = playerObj.transform;
+
+        GameObject curMapGameObj = GameObject.Instantiate(mapObj, AllManager.Instance().GridTrans);
+        curMapGameObj.transform.localPosition = Vector3.zero;
+        curMap = curMapGameObj.GetComponent<Tilemap>();
     }
 
     public void MyUpdate()
     {
-        Move();
-        Attack();
+        
     }
 
-    private void Move()
+    /*private void Move()
     {
         bool isOnWall = IsOnWall();
         bool isGrounded = IsGrounded();
@@ -167,5 +169,5 @@ public class MapManager
         {
             anim.ResetTrigger("Attack");
         }
-    }
+    }*/
 }

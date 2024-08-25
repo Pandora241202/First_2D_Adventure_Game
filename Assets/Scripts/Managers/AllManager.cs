@@ -1,16 +1,21 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AllManager : MonoBehaviour
 {
-    [SerializeField] LayerMask groundLayerMask;
     [SerializeField] PlayerConfig playerConfig;
     [SerializeField] AllBulletConfig allBulletConfig;
+    [SerializeField] AllTileConfig allTileConfig;
+    [SerializeField] AllLevelConfig allLevelConfig;
+    [SerializeField] LayerMask groundLayerMask;
+    [SerializeField] Transform gridTrans;
 
     public LayerMask GroundLayerMask => groundLayerMask;
+    public Transform GridTrans => gridTrans;
 
     public PlayerManager playerManager;
     public BulletManager bulletManager;
+    public MapManager mapManager;
+    public LevelManager levelManager;
 
     private AllManager() {}
 
@@ -29,6 +34,10 @@ public class AllManager : MonoBehaviour
     {
         playerManager = new PlayerManager(playerConfig);
         bulletManager = new BulletManager(allBulletConfig);
+        mapManager = new MapManager(allTileConfig);
+        levelManager = new LevelManager(allLevelConfig);
+        
+        levelManager.LoadLevelByNum(0);
     }
 
     void Update()

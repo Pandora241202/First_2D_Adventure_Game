@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "GroundTileConfig", menuName = "Config/TileConfig/GroundTileConfig")]
+[CreateAssetMenu(fileName = "GroundTileConfig", menuName = "Config/TileConfig/GroundTile")]
 public class GroundTileConfig : TileConfig
 {
 

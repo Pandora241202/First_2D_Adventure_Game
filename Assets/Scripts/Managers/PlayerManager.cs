@@ -13,7 +13,7 @@ public class PlayerManager
     private float timeFromLastAttack;
     private bool wallJumping;
 
-    private float sppedBuft;
+    private float speedBuft;
 
     public PlayerManager(PlayerConfig config)
     {
@@ -25,8 +25,7 @@ public class PlayerManager
         wallJumping = false;
     }
 
-    
-    private void Spawn(Vector3 pos)
+    public void Spawn(Vector3 pos)
     {
         if (body != null)
         {
@@ -39,7 +38,7 @@ public class PlayerManager
         boxCol = playerObj.GetComponent<BoxCollider2D>();
         trans = playerObj.transform;
 
-        sppedBuft = 0;
+        speedBuft = 0;
     }
 
     public void MyUpdate()
@@ -182,11 +181,11 @@ public class PlayerManager
 
     public void AddSpeedBuft(float buft)
     {
-        sppedBuft += buft;
+        speedBuft += buft;
     }
 
     public float GetSpeed()
     {
-        return config.Speed * (1 + sppedBuft) < 0 ? 0 : config.Speed * (1 + sppedBuft);
+        return config.Speed * (1 + speedBuft) < 0 ? 0 : config.Speed * (1 + speedBuft);
     }
 }

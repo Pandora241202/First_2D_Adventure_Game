@@ -13,6 +13,6 @@ public class TileConfig: ScriptableObject
 
     public virtual void ApplyEffect(PlayerManager playerManager) 
     {
-        
+        playerManager.AddSpeedBuft(SpeedDebuft);
     }
 }

@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2adc54ea41694444965b08e0cbeaffe, type: 3}
   m_Name: GroundTileConfig
   m_EditorClassIdentifier: 
-  tiles: []
-  speedDebuft: 0
+  tiles:
+  - {fileID: 11400000, guid: 3492faddeeeb0644792085102d8cbf95, type: 2}
+  - {fileID: 11400000, guid: 4e685a60771f944499496d91ddbe735b, type: 2}
+  - {fileID: 11400000, guid: 802c13a98dbbce04f8817611116fb4e6, type: 2}
+  - {fileID: 11400000, guid: 395f070981b4b6449b89bc7560d2770a, type: 2}
+  - {fileID: 11400000, guid: ab41864e23c8dda4ebc97693b4dbd145, type: 2}
+  - {fileID: 11400000, guid: 28ac6e9552a850c46a923bdcc7dd2dc6, type: 2}
+  - {fileID: 11400000, guid: a299617ae9fa2324f833ff23b8a7fc63, type: 2}
+  speedDebuft: 1

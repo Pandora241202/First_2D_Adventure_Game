@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 142b7543253c7cc4d8875e82a908b19e, type: 3}
-  m_Name: AllTileConfig
+  m_Script: {fileID: 11500000, guid: 2ab3632f66a56b64f80e537ffcbb884a, type: 3}
+  m_Name: AllLevelConfig
   m_EditorClassIdentifier: 
-  tileConfigs:
-  - {fileID: 11400000, guid: 3b4ff3272d39877458120030974801f7, type: 2}
+  levelConfigs:
+  - map: {fileID: 2832828147176601939, guid: 732a3e2ef623e964d97fb31bbed0db19, type: 3}
+    playerSpawnPos: {x: 0, y: 7, z: 1}
+    enemyPosArr: []
+    pickUpPosArr: []
