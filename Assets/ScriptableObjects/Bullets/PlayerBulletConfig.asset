@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483693429f1f995408c1c79d30425ae3, type: 3}
+  m_Name: PlayerBulletConfig
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 480684627304209324, guid: d71f300e0be038c4faa055aa229a6b59, type: 3}
+  dmg: 5
+  speed: 10
+  timeToLive: 0.7
+  timeToExplode: 0.5
