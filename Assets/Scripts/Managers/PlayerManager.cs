@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerManager
 {
@@ -85,7 +86,7 @@ public class PlayerManager
         }
 
         // Jump
-        if (Input.GetButton("Jump"))
+        if (Input.GetButton("Jump") && !IsHeadCollide())
         {
             if (isGrounded)
             {
@@ -145,6 +146,7 @@ public class PlayerManager
         RaycastHit2D hit = Physics2D.BoxCast(boxCol.bounds.center, boxCol.bounds.size, 0, Vector3.down, 0.1f, AllManager.Instance().GroundLayerMask);
         if (hit.collider != null)
         {
+            AllManager.Instance().mapManager.ApplyEffectForPlayerOnGround(hit.point, this);
             return true;
         }
         return false;
@@ -155,6 +157,16 @@ public class PlayerManager
         RaycastHit2D hit = Physics2D.BoxCast(boxCol.bounds.center, boxCol.bounds.size, 0, new Vector3(trans.localScale.x / Mathf.Abs(trans.localScale.x), 0, 0), 0.1f, AllManager.Instance().GroundLayerMask);
         if (hit.collider != null)
         {
+            return true;
+        }
+        return false;
+    }
+
+    private bool IsHeadCollide()
+    {
+        RaycastHit2D hit = Physics2D.BoxCast(boxCol.bounds.center, boxCol.bounds.size, 0, Vector3.up, 0.1f, AllManager.Instance().GroundLayerMask);
+        if (hit.collider != null)
+        {      
             return true;
         }
         return false;
@@ -179,13 +191,18 @@ public class PlayerManager
         }
     }
 
-    public void AddSpeedBuft(float buft)
+    public void SetSpeedBuft(float buft)
     {
-        speedBuft += buft;
+        speedBuft = buft;
     }
 
     public float GetSpeed()
     {
         return config.Speed * (1 + speedBuft) < 0 ? 0 : config.Speed * (1 + speedBuft);
+    }
+
+    public Vector3 GetPos()
+    {
+        return trans.position;
     }
 }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad45a7b3c2e691448c219415e39923f, type: 3}
+  m_Name: SlipGroundTileConfig
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: c2ae477d6d64cfa44825aa03424cbc9d, type: 2}
+  - {fileID: 11400000, guid: 36826fe16cfb39e4480e4baea5cabfd7, type: 2}
+  - {fileID: 11400000, guid: 151c66e3e0bcf1944be20c478632ce7d, type: 2}
+  speedDebuft: 1

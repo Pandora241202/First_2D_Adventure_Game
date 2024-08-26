@@ -8,6 +8,7 @@ public class AllManager : MonoBehaviour
     [SerializeField] AllLevelConfig allLevelConfig;
     [SerializeField] LayerMask groundLayerMask;
     [SerializeField] Transform gridTrans;
+    [SerializeField] Camera cam;
 
     public LayerMask GroundLayerMask => groundLayerMask;
     public Transform GridTrans => gridTrans;
@@ -16,6 +17,7 @@ public class AllManager : MonoBehaviour
     public BulletManager bulletManager;
     public MapManager mapManager;
     public LevelManager levelManager;
+    public CamManager camManager;
 
     private AllManager() {}
 
@@ -36,6 +38,7 @@ public class AllManager : MonoBehaviour
         bulletManager = new BulletManager(allBulletConfig);
         mapManager = new MapManager(allTileConfig);
         levelManager = new LevelManager(allLevelConfig);
+        camManager = new CamManager(cam);
         
         levelManager.LoadLevelByNum(0);
     }
@@ -44,6 +47,7 @@ public class AllManager : MonoBehaviour
     {
         playerManager.MyUpdate();
         bulletManager.MyUpdate();
+        camManager.MyUpdate();
     }
 
     private void LateUpdate()
