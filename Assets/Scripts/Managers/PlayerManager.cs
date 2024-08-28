@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class PlayerManager
 {
@@ -15,6 +14,35 @@ public class PlayerManager
     private bool wallJumping;
 
     private float speedBuft;
+    private int curHealth;
+    private int maxHealth;
+    private float invulTime;
+
+    public int CurHealth
+    {
+        get
+        {
+            return curHealth;
+        }
+        set
+        {
+            curHealth = value < 0 ? 0 : value;
+            UIManager.Instance().healthBar.SetCurHealth(curHealth);
+        }
+    }
+
+    public int MaxHealth
+    {
+        get
+        {
+            return maxHealth;
+        }
+        set
+        {
+            maxHealth = value > 9 ? 9 : value;
+            UIManager.Instance().healthBar.SetMaxHealth(maxHealth);
+        }
+    }
 
     public PlayerManager(PlayerConfig config)
     {
@@ -24,6 +52,12 @@ public class PlayerManager
         jumpWallDuration = 0;
         timeFromLastAttack = 0;
         wallJumping = false;
+        invulTime = -1;
+
+        curHealth = config.InitHealth;
+        maxHealth = config.InitMaxHealth;
+        UIManager.Instance().healthBar.SetCurHealth(curHealth);
+        UIManager.Instance().healthBar.SetMaxHealth(maxHealth);
     }
 
     public void Spawn(Vector3 pos)
@@ -44,6 +78,7 @@ public class PlayerManager
 
     public void MyUpdate()
     {
+        InvulApply();
         Move();
         Attack();
     }
@@ -204,5 +239,44 @@ public class PlayerManager
     public Vector3 GetPos()
     {
         return trans.position;
+    }
+
+    public void ProcessCollideTrap(int trapId)
+    {
+        if (IsInvul())
+        {
+            return;
+        }
+        CurHealth -= AllManager.Instance().trapManager.GetTrapDmgById(trapId);
+        SetInvul();
+    }
+
+    public bool IsInvul()
+    {
+        
+        return invulTime >= 0;
+    }
+
+    public void SetInvul()
+    {
+        invulTime = 0;
+        Color color = trans.gameObject.GetComponent<SpriteRenderer>().color;
+        color.a = 0.5f;
+        trans.gameObject.GetComponent<SpriteRenderer>().color = color;
+    }
+
+    private void InvulApply()
+    {
+        if (IsInvul()) 
+        {
+            invulTime += Time.deltaTime;
+            if (invulTime > config.MaxInvulTime)
+            {
+                invulTime = -1;
+                Color color = trans.gameObject.GetComponent<SpriteRenderer>().color;
+                color.a = 1;
+                trans.gameObject.GetComponent<SpriteRenderer>().color = color;
+            }
+        }
     }
 }

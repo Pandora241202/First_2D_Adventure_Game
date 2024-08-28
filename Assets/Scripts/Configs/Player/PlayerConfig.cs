@@ -15,6 +15,12 @@ public class PlayerConfig : ScriptableObject
 
     [SerializeField] GameObject playerPrefab;
 
+    [SerializeField] int initHealth;
+
+    [SerializeField] int initMaxHealth;
+
+    [SerializeField] float maxInvulTime;
+
     public float Speed => speed;
 
     public float JumpHigh => jumpHigh;
@@ -26,4 +32,10 @@ public class PlayerConfig : ScriptableObject
     public float AttackCD => attackCD;
 
     public GameObject PlayerPrefab => playerPrefab;
+
+    public int InitHealth => initHealth;
+
+    public int InitMaxHealth => initMaxHealth;
+
+    public float MaxInvulTime => maxInvulTime;
 }

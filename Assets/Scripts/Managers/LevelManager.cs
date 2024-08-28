@@ -13,30 +13,28 @@ public class LevelManager
 
     public void LoadNextLevel()
     {
-        curLevelNum++;
-        if (curLevelNum == levelConfigs.Length)
-        {
-            curLevelNum = 0;
-        }
-
-        LevelConfig levelConfig = levelConfigs[curLevelNum];
-
-        // Set up map
-        AllManager.Instance().mapManager.SetUp(levelConfig.Map);
-
-        // Spawn player
-        AllManager.Instance().playerManager.Spawn(levelConfig.PlayerSpawnPos);
-
-        // Set up enemy
-
-        // Set up Pickup
+        LoadLevelByNum(curLevelNum == levelConfigs.Length - 1 ? 0 : curLevelNum + 1);
     }
 
     public void LoadLevelByNum(int levelNum)
     {
         curLevelNum = levelNum;
         LevelConfig levelConfig = levelConfigs[curLevelNum];
+        
+        // Set up map
         AllManager.Instance().mapManager.SetUp(levelConfig.Map);
+
+        // Spawn player
         AllManager.Instance().playerManager.Spawn(levelConfig.PlayerSpawnPos);
+
+        // Set up trap
+        foreach (TrapSpawnInfo info in levelConfig.TrapPosArr)
+        {
+            AllManager.Instance().trapManager.SpawnByType((TrapManager.TrapType)info.trapTypeInt, info.pos);
+        }
+
+        // Set up enemy
+
+        // Set up Pickup
     }
 }

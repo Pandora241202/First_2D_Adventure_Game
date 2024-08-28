@@ -69,9 +69,9 @@ public class BulletManager
         PlayerBullet,
     }
 
-    public BulletManager(AllBulletConfig allBulletConfigs)
+    public BulletManager(AllBulletConfig allBulletConfig)
     {
-        bulletConfigs = allBulletConfigs.BulletConfigs;
+        bulletConfigs = allBulletConfig.BulletConfigs;
 
         for (int i = 0; i < bulletNotActiveListByType.Length; i++)
         {

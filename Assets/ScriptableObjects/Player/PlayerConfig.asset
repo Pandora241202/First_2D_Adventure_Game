@@ -18,3 +18,6 @@ MonoBehaviour:
   maxJumpWallDuration: 0.2
   attackCD: 0.5
   playerPrefab: {fileID: 451914807131861949, guid: 7de3dd71d502e814b9047f636b18247c, type: 3}
+  initHealth: 3
+  initMaxHealth: 4
+  maxInvulTime: 0.5
