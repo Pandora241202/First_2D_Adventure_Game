@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerManager
 {
@@ -17,6 +18,7 @@ public class PlayerManager
     private int curHealth;
     private int maxHealth;
     private float invulTime;
+    private bool isDead;
 
     public int CurHealth
     {
@@ -26,7 +28,20 @@ public class PlayerManager
         }
         set
         {
+            if (IsInvul())
+            {
+                return;
+            }
+            if (curHealth > value)
+            {
+                anim.SetTrigger("Hurt");
+                SetInvul();
+            }
             curHealth = value < 0 ? 0 : value;
+            if (curHealth == 0) 
+            {
+                SetDie();
+            }
             UIManager.Instance().healthBar.SetCurHealth(curHealth);
         }
     }
@@ -47,12 +62,26 @@ public class PlayerManager
     public PlayerManager(PlayerConfig config)
     {
         this.config = config;
+        GameObject playerObj = GameObject.Instantiate(config.PlayerPrefab, new Vector3(0, 7, 0), Quaternion.identity);
+        body = playerObj.GetComponent<Rigidbody2D>();
+        anim = playerObj.GetComponent<Animator>();
+        boxCol = playerObj.GetComponent<BoxCollider2D>();
+        trans = playerObj.transform;
         Spawn(new Vector3(0, 7, 0));
+    }
+
+    public void Spawn(Vector3 pos)
+    {
+        trans.gameObject.SetActive(true);
+        isDead = false;
+
+        trans.position = pos;
         jumpKeyHoldDuration = config.MaxJumpKeyHoldDuration;
         jumpWallDuration = 0;
         timeFromLastAttack = 0;
         wallJumping = false;
         invulTime = -1;
+        speedBuft = 0;
 
         curHealth = config.InitHealth;
         maxHealth = config.InitMaxHealth;
@@ -60,24 +89,13 @@ public class PlayerManager
         UIManager.Instance().healthBar.SetMaxHealth(maxHealth);
     }
 
-    public void Spawn(Vector3 pos)
-    {
-        if (body != null)
-        {
-            GameObject.Destroy(body.gameObject);  
-        }
-        
-        GameObject playerObj = GameObject.Instantiate(config.PlayerPrefab, pos, Quaternion.identity);
-        body = playerObj.GetComponent<Rigidbody2D>();
-        anim = playerObj.GetComponent<Animator>();
-        boxCol = playerObj.GetComponent<BoxCollider2D>();
-        trans = playerObj.transform;
-
-        speedBuft = 0;
-    }
-
     public void MyUpdate()
     {
+        if (isDead)
+        {
+            Die();
+            return;
+        }
         InvulApply();
         Move();
         Attack();
@@ -220,10 +238,6 @@ public class PlayerManager
                 AllManager.Instance().bulletManager.ActivateBulletByType(BulletManager.BulletType.PlayerBullet, trans.position, trans.localScale.x < 0 ? -1 : 1);
             }
         }
-        else
-        {
-            anim.ResetTrigger("Attack");
-        }
     }
 
     public void SetSpeedBuft(float buft)
@@ -243,12 +257,7 @@ public class PlayerManager
 
     public void ProcessCollideTrap(int trapId)
     {
-        if (IsInvul())
-        {
-            return;
-        }
         CurHealth -= AllManager.Instance().trapManager.GetTrapDmgById(trapId);
-        SetInvul();
     }
 
     public bool IsInvul()
@@ -276,6 +285,24 @@ public class PlayerManager
                 Color color = trans.gameObject.GetComponent<SpriteRenderer>().color;
                 color.a = 1;
                 trans.gameObject.GetComponent<SpriteRenderer>().color = color;
+            }
+        }
+    }
+
+    private void SetDie()
+    {
+        anim.SetTrigger("Die");
+        isDead = true;
+    }
+
+    private void Die()
+    {
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.IsName("Die"))
+        {
+            if (stateInfo.normalizedTime >= 1.0f)
+            {
+                trans.gameObject.SetActive(false);
             }
         }
     }

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trapConfigs:
   - {fileID: 11400000, guid: c1ddefec7f5981b42a4b2326ba2e7f48, type: 2}
+  - {fileID: 11400000, guid: 05c42bca49be9e74ab6838da51076d34, type: 2}
+  - {fileID: 11400000, guid: a07c477d75c33a0439e72fcff3ab3933, type: 2}

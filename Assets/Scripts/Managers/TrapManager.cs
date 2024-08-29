@@ -8,6 +8,7 @@ public class Trap
     public TrapManager.TrapType type;
     public Animator anim;
     public Vector3 centerPos;
+    public float timeCount;
 
     public Trap(TrapManager.TrapType type, TrapConfig config, GameObject trapObj)
     { 
@@ -16,6 +17,7 @@ public class Trap
         this.trans = trapObj.transform;
         this.type = type;
         this.centerPos = trapObj.transform.position;
+        this.timeCount = 0;
     }
 
     public void Active()
@@ -32,6 +34,8 @@ public class TrapManager
     public enum TrapType
     {
         SawTrap,
+        SpikeTrap,
+        FireTrap
     }
 
     public TrapManager(AllTrapConfig allTrapConfig)
@@ -39,10 +43,10 @@ public class TrapManager
         trapConfigs = allTrapConfig.TrapConfigs;
     }
 
-    public void SpawnByType(TrapType type, Vector3 pos)
+    public void SpawnByType(TrapType type, Vector3 pos, Vector3 rotate)
     {
         TrapConfig config = trapConfigs[(int)type];
-        GameObject trapObj = GameObject.Instantiate(config.TrapPrefab, pos, Quaternion.identity);
+        GameObject trapObj = GameObject.Instantiate(config.TrapPrefab, pos, Quaternion.Euler(rotate));
         trapDict.Add(trapObj.GetInstanceID(), new Trap(type, config, trapObj));
     }
 

@@ -17,7 +17,8 @@ public class PickUpSpawnInfo
 [System.Serializable]
 public class TrapSpawnInfo
 {
-    [SerializeField] public int trapTypeInt;
+    [SerializeField] public TrapManager.TrapType type;
+    [SerializeField] public Vector3 rotate;
     [SerializeField] public Vector3 pos;
 }
 
