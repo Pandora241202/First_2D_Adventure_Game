@@ -4,7 +4,7 @@ public class BulletConfig : ScriptableObject
 {
     [SerializeField] GameObject bulletPrefab;
     
-    [SerializeField] float dmg;
+    [SerializeField] int dmg;
 
     [SerializeField] float speed;
 
@@ -14,7 +14,7 @@ public class BulletConfig : ScriptableObject
 
     public GameObject BulletPrefab => bulletPrefab;
 
-    public float Dmg => dmg;
+    public int Dmg => dmg;
 
     public float TimeToLive => timeToLive;
 

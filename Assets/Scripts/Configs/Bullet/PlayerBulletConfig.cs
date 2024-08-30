@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerBulletConfig", menuName = "Config/BulletConfig/BulletMoveStraight/PlayerBullet")]
+[CreateAssetMenu(fileName = "PlayerBulletConfig", menuName = "Config/BulletConfig/PlayerBullet")]
 public class PlayerBulletConfig : BulletMoveStraightConfig
 {
     public override void Set(Bullet bullet, Vector3 srcPos, int xScaleSign)

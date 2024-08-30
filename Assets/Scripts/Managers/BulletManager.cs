@@ -140,4 +140,9 @@ public class BulletManager
     {
         bulletIdsToDeactivate.Add(id);
     }
+
+    public int GetBulletDmgById(int id)
+    {
+        return bulletActiveDict[id].config.Dmg;
+    }
 }

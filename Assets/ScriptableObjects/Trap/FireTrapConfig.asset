@@ -17,3 +17,6 @@ MonoBehaviour:
   fireRange: 16
   fireCD: 2
   fireDuration: 1
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128

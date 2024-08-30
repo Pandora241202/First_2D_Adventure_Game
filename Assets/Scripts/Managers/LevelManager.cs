@@ -34,6 +34,10 @@ public class LevelManager
         }
 
         // Set up enemy
+        foreach (EnemySpawnInfo info in levelConfig.EnemyPosArr)
+        {
+            AllManager.Instance().enemyManager.SpawnByType(info.type, info.pos, info.patrolRange);
+        }
 
         // Set up Pickup
     }

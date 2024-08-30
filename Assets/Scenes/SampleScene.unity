@@ -501,6 +501,7 @@ MonoBehaviour:
   allTileConfig: {fileID: 11400000, guid: 45606b64cce303240a164034d67de966, type: 2}
   allLevelConfig: {fileID: 11400000, guid: 898e98faf2862fc4284df4d1ab6c84f7, type: 2}
   allTrapConfig: {fileID: 11400000, guid: d387a53315db61c4f91d22bfca8cffd9, type: 2}
+  allEnemyConfig: {fileID: 11400000, guid: fe5f8bb318ec8d8488a8ddf99a29610c, type: 2}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -719,7 +720,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678019075}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.7804, y: 4.0854, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

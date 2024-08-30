@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class CreepSpawnInfo
+public class EnemySpawnInfo
 {
-    [SerializeField] public int creepTypeInt;
+    [SerializeField] public EnemyManager.EnemyType type;
     [SerializeField] public Vector3 pos;
+    [SerializeField] public float patrolRange;
 }
 
 [System.Serializable]
@@ -29,7 +30,7 @@ public class LevelConfig
 
     [SerializeField] Vector3 playerSpawnPos;
 
-    [SerializeField] CreepSpawnInfo[] enemyPosArr;
+    [SerializeField] EnemySpawnInfo[] enemyPosArr;
 
     [SerializeField] TrapSpawnInfo[] trapPosArr;
 
@@ -39,7 +40,7 @@ public class LevelConfig
 
     public Vector3 PlayerSpawnPos => playerSpawnPos;
 
-    public CreepSpawnInfo[] EnemyPosArr => enemyPosArr;
+    public EnemySpawnInfo[] EnemyPosArr => enemyPosArr;
 
     public PickUpSpawnInfo[] PickUpPosArr => pickUpPosArr;
 

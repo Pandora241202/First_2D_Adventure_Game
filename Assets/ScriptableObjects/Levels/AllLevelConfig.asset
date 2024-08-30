@@ -15,7 +15,10 @@ MonoBehaviour:
   levelConfigs:
   - map: {fileID: 2832828147176601939, guid: 732a3e2ef623e964d97fb31bbed0db19, type: 3}
     playerSpawnPos: {x: 0, y: 7, z: 1}
-    enemyPosArr: []
+    enemyPosArr:
+    - type: 0
+      pos: {x: 21.5, y: -1.8, z: 1}
+      patrolRange: 11
     trapPosArr:
     - type: 0
       rotate: {x: 0, y: 0, z: 0}

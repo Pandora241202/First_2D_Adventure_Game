@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "AllBulletConfig", menuName = "Config/BulletConfig/AllBullet")]
-public class AllBulletConfig : ScriptableObject
+[CreateAssetMenu(fileName = "AllEnemyConfig", menuName = "Config/EnemyConfig/AllEnemy")]
+public class AllEnemyConfig : ScriptableObject
 {
-    [SerializeField] BulletConfig[] bulletConfigs;
+    [SerializeField] EnemyConfig[] enemyConfigs;
 
-    public BulletConfig[] BulletConfigs => bulletConfigs;
+    public EnemyConfig[] EnemyConfigs => enemyConfigs;
 }
