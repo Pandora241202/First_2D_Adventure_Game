@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2013f5c475ce942a2b0c77994ec643, type: 3}
+  m_Name: RangeEnemyBulletConfig
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 6611899733165794654, guid: 93509fca9b413614ca51eb1da465257c, type: 3}
+  dmg: 1
+  speed: 8
+  timeToLive: 1

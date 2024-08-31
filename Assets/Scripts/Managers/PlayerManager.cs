@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class PlayerManager
 {
@@ -40,7 +39,7 @@ public class PlayerManager
             curHealth = value < 0 ? 0 : value;
             if (curHealth == 0) 
             {
-                SetDie();
+                Die();
             }
             UIManager.Instance().healthBar.SetCurHealth(curHealth);
         }
@@ -73,6 +72,9 @@ public class PlayerManager
     public void Spawn(Vector3 pos)
     {
         trans.gameObject.SetActive(true);
+        boxCol.enabled = true;
+        body.gravityScale = 2;
+        body.simulated = true;
         isDead = false;
 
         trans.position = pos;
@@ -93,9 +95,9 @@ public class PlayerManager
     {
         if (isDead)
         {
-            Die();
             return;
         }
+
         InvulApply();
         Move();
         Attack();
@@ -289,21 +291,12 @@ public class PlayerManager
         }
     }
 
-    private void SetDie()
-    {
-        anim.SetTrigger("Die");
-        isDead = true;
-    }
-
     private void Die()
     {
-        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
-        if (stateInfo.IsName("Die"))
-        {
-            if (stateInfo.normalizedTime >= 1.0f)
-            {
-                trans.gameObject.SetActive(false);
-            }
-        }
+        anim.SetTrigger("Die");
+        boxCol.enabled = false;
+        body.gravityScale = 0;
+        body.simulated = false;
+        isDead = true;
     }
 }

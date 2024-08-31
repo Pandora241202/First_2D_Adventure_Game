@@ -11,4 +11,6 @@ public class TrapConfig : ScriptableObject
     public int Dmg => dmg;
 
     public virtual void Active(Trap trap) { }
+
+    public virtual void Set(Trap trap) { }
 }

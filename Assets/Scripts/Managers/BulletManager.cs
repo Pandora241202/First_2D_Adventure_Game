@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using Unity.VisualScripting.FullSerializer;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet
 {
     public BulletConfig config;
     public float timeFromActivate;
-    public float timeFromStartExplode;
     public Transform trans;
     public BulletManager.BulletType type;
     public Animator anim;
@@ -25,8 +24,8 @@ public class Bullet
     public void Set(Vector3 srcPos, int xScaleSign)
     {
         trans.gameObject.SetActive(true);
+        trans.gameObject.GetComponent<Collider2D>().enabled = true;
         timeFromActivate = 0;
-        timeFromStartExplode = -1;
         config.Set(this, srcPos, xScaleSign);
     }
 
@@ -42,31 +41,21 @@ public class Bullet
 
     public void Explode()
     {
-        if (timeFromStartExplode == -1)
-        {
-            anim.SetTrigger("Explode");
-            timeFromStartExplode = 0;
-            return;
-        }
-
-        timeFromStartExplode += Time.deltaTime;
-        if (timeFromStartExplode > config.TimeToExplode)
-        {
-            AllManager.Instance().bulletManager.DeactivateBulletById(trans.gameObject.GetInstanceID());
-        }
+        config.Explode(this);
     }
 }
 
 public class BulletManager
 {
     private Dictionary<int, Bullet> bulletActiveDict = new Dictionary<int, Bullet>();
-    private List<Bullet>[] bulletNotActiveListByType = new List<Bullet>[1];
+    private List<Bullet>[] bulletNotActiveListByType = new List<Bullet>[Enum.GetValues(typeof(BulletType)).Length];
     private List<int> bulletIdsToDeactivate = new List<int>();
     private BulletConfig[] bulletConfigs;
 
     public enum BulletType
     {
         PlayerBullet,
+        RangeEnemyBullet
     }
 
     public BulletManager(AllBulletConfig allBulletConfig)
@@ -78,7 +67,7 @@ public class BulletManager
             bulletNotActiveListByType[i] = new List<Bullet>();
         }
 
-        for (BulletType type = BulletType.PlayerBullet; type <= BulletType.PlayerBullet; type++)
+        foreach (BulletType type in Enum.GetValues(typeof(BulletType)))
         {
             for (int i = 0; i < 10; i++)
             {
@@ -87,7 +76,7 @@ public class BulletManager
         }
     }
 
-    public void SpawnByType(BulletType type)
+    private void SpawnByType(BulletType type)
     {
         bulletNotActiveListByType[(int)type].Add(new Bullet(type, bulletConfigs[(int)type]));
     }
@@ -109,13 +98,8 @@ public class BulletManager
     {
         foreach (Bullet bullet in bulletActiveDict.Values)
         {
-            if (bullet.timeFromStartExplode >= 0)
-            {
-                bullet.Explode();
-                continue;
-            }
-
             bullet.Move();
+            
             bullet.timeFromActivate += Time.deltaTime;
             if (bullet.timeFromActivate >= bullet.config.TimeToLive)
             {

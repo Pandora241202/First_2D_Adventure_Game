@@ -30,7 +30,7 @@ public class LevelManager
         // Set up trap
         foreach (TrapSpawnInfo info in levelConfig.TrapPosArr)
         {
-            AllManager.Instance().trapManager.SpawnByType(info.type, info.pos, info.rotate);
+            AllManager.Instance().trapManager.SpawnByType(info.type, info.pos, info.rotate, info.range);
         }
 
         // Set up enemy

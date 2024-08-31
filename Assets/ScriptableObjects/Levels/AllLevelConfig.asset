@@ -17,22 +17,30 @@ MonoBehaviour:
     playerSpawnPos: {x: 0, y: 7, z: 1}
     enemyPosArr:
     - type: 0
-      pos: {x: 21.5, y: -1.8, z: 1}
+      pos: {x: 21.5, y: -1.8, z: 0}
       patrolRange: 11
+    - type: 1
+      pos: {x: 63.5, y: 0.5, z: 0}
+      patrolRange: 13
     trapPosArr:
     - type: 0
       rotate: {x: 0, y: 0, z: 0}
       pos: {x: 6, y: -2, z: 4}
+      range: 10
+    - type: 1
+      rotate: {x: 0, y: 0, z: 0}
+      pos: {x: -4.5, y: -1.5, z: 4}
+      range: 2
     - type: 1
       rotate: {x: 0, y: 0, z: 0}
       pos: {x: 0.5, y: -0.5, z: 4}
+      range: 1
     - type: 1
       rotate: {x: 0, y: 0, z: 0}
-      pos: {x: -5, y: -1.5, z: 4}
-    - type: 1
-      rotate: {x: 0, y: 0, z: 0}
-      pos: {x: -4, y: -1.5, z: 4}
+      pos: {x: 36.5, y: -4.5, z: 4}
+      range: 19
     - type: 2
       rotate: {x: 0, y: 0, z: 90}
       pos: {x: 14, y: 4.5, z: 4}
+      range: 0
     pickUpPosArr: []

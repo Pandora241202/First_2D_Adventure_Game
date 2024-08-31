@@ -16,7 +16,7 @@ MonoBehaviour:
   dmg: 1
   speed: 3
   attackCD: 1
-  maxHealth: 2
+  maxHealth: 3
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128

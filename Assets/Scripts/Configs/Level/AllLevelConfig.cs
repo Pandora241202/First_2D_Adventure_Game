@@ -21,6 +21,7 @@ public class TrapSpawnInfo
     [SerializeField] public TrapManager.TrapType type;
     [SerializeField] public Vector3 rotate;
     [SerializeField] public Vector3 pos;
+    [SerializeField] public float range;
 }
 
 [System.Serializable]

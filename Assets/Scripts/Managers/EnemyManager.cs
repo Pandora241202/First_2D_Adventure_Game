@@ -60,6 +60,7 @@ public class EnemyManager
     public enum EnemyType
     {
         MeleeEnemy,
+        RangeEnemy
     }
 
     public EnemyManager(AllEnemyConfig allEnemyConfig)

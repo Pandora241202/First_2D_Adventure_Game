@@ -17,4 +17,9 @@ public class PlayerController : MonoBehaviour
             AllManager.Instance().playerManager.ProcessCollideTrap(other.gameObject.GetInstanceID());
         }
     }
+
+    public void RemovePlayer()
+    {
+        gameObject.SetActive(false);
+    }
 }
