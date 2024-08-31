@@ -15,3 +15,4 @@ MonoBehaviour:
   bulletConfigs:
   - {fileID: 11400000, guid: 7c22b0bbecab9344f99535e397266ef6, type: 2}
   - {fileID: 11400000, guid: 793a1f1b0ff3a584ea27478c79a06c6d, type: 2}
+  - {fileID: 11400000, guid: 3b7c7d918d859af409b0b7401a811f80, type: 2}

@@ -60,7 +60,8 @@ public class EnemyManager
     public enum EnemyType
     {
         MeleeEnemy,
-        RangeEnemy
+        RangeEnemy,
+        ShooterEnemy
     }
 
     public EnemyManager(AllEnemyConfig allEnemyConfig)
@@ -68,10 +69,15 @@ public class EnemyManager
         enemyConfigs = allEnemyConfig.EnemyConfigs;
     }
 
-    public void SpawnByType(EnemyType type, Vector3 pos, float patrolRange)
+    public void SpawnByType(EnemyType type, Vector3 pos, float patrolRange, bool isFacingLeft)
     {
         EnemyConfig config = enemyConfigs[(int)type];
         GameObject enemyObj = GameObject.Instantiate(config.EnemyPrefab, pos, Quaternion.identity);
+        if (isFacingLeft)
+        {
+            Vector3 scale = enemyObj.transform.localScale;
+            enemyObj.transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
+        }
         enemyDict.Add(enemyObj.GetInstanceID(), new Enemy(type, config, enemyObj, patrolRange));
     }
 

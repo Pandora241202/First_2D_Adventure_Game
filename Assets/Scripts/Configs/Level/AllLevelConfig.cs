@@ -5,6 +5,7 @@ public class EnemySpawnInfo
 {
     [SerializeField] public EnemyManager.EnemyType type;
     [SerializeField] public Vector3 pos;
+    [SerializeField] public bool isFacingLeft;
     [SerializeField] public float patrolRange;
 }
 

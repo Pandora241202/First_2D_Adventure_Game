@@ -55,7 +55,8 @@ public class BulletManager
     public enum BulletType
     {
         PlayerBullet,
-        RangeEnemyBullet
+        RangeEnemyBullet,
+        ShooterEnemyBullet
     }
 
     public BulletManager(AllBulletConfig allBulletConfig)
