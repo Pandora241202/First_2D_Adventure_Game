@@ -27,20 +27,24 @@ public class PlayerManager
         }
         set
         {
-            if (IsInvul())
-            {
-                return;
-            }
             if (curHealth > value)
             {
+                if (IsInvul())
+                {
+                    return;
+                }
+
                 anim.SetTrigger("Hurt");
                 SetInvul();
             }
-            curHealth = value < 0 ? 0 : value;
-            if (curHealth == 0) 
+
+            curHealth = value < 0 ? 0 : value > maxHealth ? maxHealth : value;
+
+            if (curHealth == 0)
             {
                 Die();
             }
+
             UIManager.Instance().healthBar.SetCurHealth(curHealth);
         }
     }

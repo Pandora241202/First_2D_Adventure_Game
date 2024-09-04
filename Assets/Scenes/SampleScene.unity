@@ -502,6 +502,7 @@ MonoBehaviour:
   allLevelConfig: {fileID: 11400000, guid: 898e98faf2862fc4284df4d1ab6c84f7, type: 2}
   allTrapConfig: {fileID: 11400000, guid: d387a53315db61c4f91d22bfca8cffd9, type: 2}
   allEnemyConfig: {fileID: 11400000, guid: fe5f8bb318ec8d8488a8ddf99a29610c, type: 2}
+  allPickupConfig: {fileID: 11400000, guid: 3150ef5e14066a74097d09e37ccb9b22, type: 2}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64

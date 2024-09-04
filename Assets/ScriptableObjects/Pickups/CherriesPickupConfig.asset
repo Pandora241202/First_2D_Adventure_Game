@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655b49387762961428a2b657d067b4e3, type: 3}
+  m_Name: CherriesPickupConfig
+  m_EditorClassIdentifier: 
+  pickupPrefab: {fileID: 7886780704893997750, guid: 9a19b796d4836264cb7e49f213ead921, type: 3}

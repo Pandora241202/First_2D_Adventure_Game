@@ -8,6 +8,7 @@ public class AllManager : MonoBehaviour
     [SerializeField] AllLevelConfig allLevelConfig;
     [SerializeField] AllTrapConfig allTrapConfig;
     [SerializeField] AllEnemyConfig allEnemyConfig;
+    [SerializeField] AllPickupConfig allPickupConfig;
     [SerializeField] LayerMask groundLayerMask;
     [SerializeField] Transform gridTrans;
     [SerializeField] Camera cam;
@@ -21,6 +22,7 @@ public class AllManager : MonoBehaviour
     public LevelManager levelManager;
     public TrapManager trapManager;
     public EnemyManager enemyManager;
+    public PickupManager pickupManager;
     public CamManager camManager;
 
     private AllManager() {}
@@ -44,6 +46,7 @@ public class AllManager : MonoBehaviour
         levelManager = new LevelManager(allLevelConfig);
         trapManager = new TrapManager(allTrapConfig);
         enemyManager = new EnemyManager(allEnemyConfig);
+        pickupManager = new PickupManager(allPickupConfig);
         camManager = new CamManager(cam);
         
         levelManager.LoadLevelByNum(0);
@@ -56,11 +59,13 @@ public class AllManager : MonoBehaviour
         camManager.MyUpdate();
         trapManager.MyUpdate();
         enemyManager.MyUpdate();
+        pickupManager.MyUpdate();
     }
 
     private void LateUpdate()
     {
         bulletManager.MyLateUpdate();
         enemyManager.MyLateUpdate();
+        pickupManager.MyLateUpdate();
     }
 }

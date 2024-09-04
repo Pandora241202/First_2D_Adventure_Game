@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
         { 
             AllManager.Instance().playerManager.ProcessCollideTrap(other.gameObject.GetInstanceID());
         }
+        else if (other.gameObject.CompareTag("Pickup"))
+        {
+            AllManager.Instance().pickupManager.ProcessPickedByPlayer(other.gameObject.GetInstanceID());
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)

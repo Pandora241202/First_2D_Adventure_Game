@@ -5,7 +5,6 @@ public class Enemy
 {
     public EnemyConfig config;
     public Transform trans;
-    public EnemyManager.EnemyType type;
     public Animator anim;
     public Vector3 centerPos;
     public float patrolRange;
@@ -33,12 +32,11 @@ public class Enemy
         }
     }
 
-    public Enemy(EnemyManager.EnemyType type, EnemyConfig config, GameObject enemyObj, float patrolRange)
+    public Enemy(EnemyConfig config, GameObject enemyObj, float patrolRange)
     {
         this.config = config;
         anim = enemyObj.GetComponent<Animator>();
         this.trans = enemyObj.transform;
-        this.type = type;
         this.health = config.MaxHealth;
         this.centerPos = enemyObj.transform.position;
         this.timeFromLastAttack = config.AttackCD;
@@ -78,7 +76,7 @@ public class EnemyManager
             Vector3 scale = enemyObj.transform.localScale;
             enemyObj.transform.localScale = new Vector3(-scale.x, scale.y, scale.z);
         }
-        enemyDict.Add(enemyObj.GetInstanceID(), new Enemy(type, config, enemyObj, patrolRange));
+        enemyDict.Add(enemyObj.GetInstanceID(), new Enemy(config, enemyObj, patrolRange));
     }
 
     public int GetEnemyDmgById(int id)

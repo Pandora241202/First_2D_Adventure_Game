@@ -49,4 +49,8 @@ MonoBehaviour:
       rotate: {x: 0, y: 0, z: 90}
       pos: {x: 14, y: 4.5, z: 4}
       range: 0
-    pickUpPosArr: []
+    pickUpPosArr:
+    - type: 0
+      pos: {x: 12, y: 4.7, z: 1}
+    - type: 1
+      pos: {x: 38.5, y: 6.7, z: 1}

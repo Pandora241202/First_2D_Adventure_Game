@@ -40,5 +40,9 @@ public class LevelManager
         }
 
         // Set up Pickup
+        foreach (PickUpSpawnInfo info in levelConfig.PickUpPosArr)
+        {
+            AllManager.Instance().pickupManager.SpawnByType(info.type, info.pos);
+        }
     }
 }

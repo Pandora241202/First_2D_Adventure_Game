@@ -12,7 +12,7 @@ public class EnemySpawnInfo
 [System.Serializable]
 public class PickUpSpawnInfo
 {
-    [SerializeField] public int pickUpTypeInt;
+    [SerializeField] public PickupManager.PickupType type;
     [SerializeField] public Vector3 pos;
 }
 
